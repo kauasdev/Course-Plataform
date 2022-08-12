@@ -11,4 +11,5 @@ export const Link = styled.a`
     border-radius: 80px;
     font: normal bold 1.2rem "Poppins";
     cursor: pointer;
+    z-index: 5;
 `;

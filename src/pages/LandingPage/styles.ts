@@ -126,6 +126,7 @@ export const Main = styled.main`
             width: 50%;
  
             &.introduction {
+                z-index: 5;
                 gap: 25px;
                 h1 {
                     text-align: left;
@@ -147,7 +148,7 @@ export const Main = styled.main`
 
                 div.back {
                     position: absolute;
-                    z-index: 0;
+                    z-index: -1;
                     top: 15%;
                     left: 5%;
                     width: 90%;

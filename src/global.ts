@@ -28,6 +28,10 @@ export const GlobalStyle = createGlobalStyle`
 
     --green-300: #00B37E;
     --green-500: #00875f;
+
+    --facebook-blue: #4267B2;
+    --google-red: #DB4437;
+    --github-black: ##1B1F23;
 }
 
 @media (max-width: 768px){
