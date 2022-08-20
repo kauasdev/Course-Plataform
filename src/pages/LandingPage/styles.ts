@@ -248,7 +248,7 @@ export const Main = styled.main`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 20px;
+        gap: 25px;
         background-color: var(--gray-800);
         padding: 10px 0;
 
@@ -275,7 +275,7 @@ export const Main = styled.main`
 export const Footer = styled.footer`
     display: flex;
     width: 100%;
-    height: 60px;
+    height: 50px;
     padding: 20px;
     justify-content: center;
     align-items: center;

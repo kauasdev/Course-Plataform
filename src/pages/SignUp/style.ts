@@ -6,17 +6,62 @@ export const Container = styled.div`
     height: 100vh;
     background-color: var(--gray-800);
 
-    div {
+    div:not(.errorMessage) {
         display: flex;
         height: 100%;
     }
+
+    div.errorMessage {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        min-height: 100px;
+        background-color: var(--gray-700);
+        padding: 10px;
+        border-radius: 10px;
+        gap: 10px;
+
+        div {
+            max-width: 100%;
+            border-radius: 0;
+            padding: 0;
+        }
+
+        p {
+            font: normal normal 1.2rem "Poppins", "Inter", sans-serif;
+            text-align: left;
+            color: var(--green-300);
+
+            &+p {
+                margin-top: 10px;
+            }
+        }
+
+        button {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            border: 0;
+            border-radius: 7px;
+            background-color: var(--green-300);
+            color: var(--white);
+            font: normal bold 1.2rem "Poppins", "Inter", sans-serif;
+        }
+    } 
 
     div.signUp {
         width: 40%;
         justify-content: center;
         align-items: center;
         
-        div {
+        div:not(.errorMessage), div:not(.input) {
             flex-direction: column;
             justify-content: space-between;
             width: 360px;
@@ -38,23 +83,39 @@ export const Container = styled.div`
                 flex-direction: column;
                 width: 100%;
 
-                label {
-                    font: normal normal 0.9rem "Poppins", "Inter", sans-serif;
-                    margin: 3px 0;
-                    color: var(--green-300);
+                div {
+                    position: relative;
+                    display: flex;
+                    width: 100%;
+                    height: 65px;
+                    padding: 0;
+                    border-radius: 0;
+
+                    .eyeIcon {
+                        position: absolute;
+                        top: 60%;
+                        right: 10px;
+                        color: var(--white);
+                    }
+
+                    label {
+                        font: normal normal 0.9rem "Poppins", "Inter", sans-serif;
+                        margin: 6px 0 0 0;
+                        color: var(--green-300);
+                    }
+                    
+                    input {
+                        width: 100%;
+                        min-height: 32px;
+                        background-color: var(--gray-600);
+                        border: 0;
+                        border-radius: 7px;
+                        outline: none;
+                        padding: 5px 10px;
+                        color: var(--white);
+                    }
                 }
 
-                input {
-                    width: 100%;
-                    height: 35px;
-                    background-color: var(--gray-600);
-                    border: 0;
-                    border-radius: 7px;
-                    outline: none;
-                    padding: 5px 10px;
-                    color: var(--white);
-                }
-                
                 a {
                     font: normal normal 0.8rem "Poppins", "Inter", sans-serif;
                     text-decoration: none;
@@ -70,7 +131,7 @@ export const Container = styled.div`
                 button {
                     display: flex;
                     width: 100%;
-                    height: 40px;
+                    min-height: 35px;
                     justify-content: center;
                     align-items: center;
                     border: 0;

@@ -34,8 +34,6 @@ const imgLink = "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ix
 
 const { data } = await api.get("/plan");
 
-console.log(data)
-
 export function LandingPage(){
     return (
         <Container>
@@ -116,25 +114,28 @@ export function LandingPage(){
                     </div>
                     <div className="planList">
                         {
-                            data.map((plan: IPlanResponse) => {
-                                return <PlanBox
-                                    key={plan.id}
-                                    course_count_limit={plan.course_count_limit}
-                                    id={plan.id}
-                                    name={plan.name}
-                                    type={plan.type}
-                                    isFree={plan.isFree}
-                                    description={plan.description}
-                                    value={plan.value}
-                                    dashboard_available={plan.dashboard_available}
-                                />
-                            })
+                                data ? 
+                                data.map((plan: IPlanResponse) => {
+                                    return <PlanBox
+                                        key={plan.id}
+                                        course_count_limit={plan.course_count_limit}
+                                        id={plan.id}
+                                        name={plan.name}
+                                        type={plan.type}
+                                        isFree={plan.isFree}
+                                        description={plan.description}
+                                        value={plan.value}
+                                        dashboard_available={plan.dashboard_available}
+                                    />
+                                })
+                                :
+                                null
                         }
                     </div>
                 </section>
             </Main>
             <Footer>
-                <p>Developed By <a href="https://github.com/KauaLima06">Kauã Lima</a></p>
+                <p>Developed By <a href="https://github.com/KauaLima06" target={"_blank"}>Kauã Lima</a></p>
             </Footer>
         </Container>
     )

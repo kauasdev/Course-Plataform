@@ -51,4 +51,17 @@ body, input, textarea, button {
 a, button {
     cursor: pointer;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--gray-700);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--green-300);
+    border-radius: 30px;
+}
 `;

@@ -1,13 +1,18 @@
 import { FacebookLogo, GithubLogo, GoogleLogo } from "phosphor-react"
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useContext, useState } from "react"
+import { Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 import { api } from "../../services/api";
 import { Container } from "./style"
 
 export function LoginPage(){
 
+    const navigate = useNavigate();
+
     const [emailOrUsername, setEmailOrUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
+    const { login } = useContext(AuthContext);
 
     function changeEmailOrUsername(e: ChangeEvent<HTMLInputElement>){
         setEmailOrUsername(e.target.value);
@@ -17,25 +22,36 @@ export function LoginPage(){
         setPassword(e.target.value);
     }
 
+    const redirect = () => {
+        navigate("/home");
+    }
+
     async function submitForm(e: FormEvent) {
         e.preventDefault();
 
         const isEmail = emailOrUsername.includes("@");
 
-        if(isEmail){
-            const { data } = await api.post("/user/auth", {
-                email: emailOrUsername,
-                password: password,
-            });
 
-            console.log(data);
+        try {
+            if(!isEmail){
+                login({
+                    username: emailOrUsername,
+                    password,
+                });
+
+            }
+            
+            if(isEmail){
+                login({
+                    email: emailOrUsername,
+                    password,
+                });
+            }
+            
+            redirect()
+        } catch (error) {
+           return <Navigate to="/login" /> 
         }
-        
-        const { data } = await api.post("/user/auth", {
-            email: emailOrUsername,
-            password: password,
-        });
-        console.log(data);
     }
 
     return (
